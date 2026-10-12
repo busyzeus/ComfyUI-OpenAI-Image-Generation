@@ -1,0 +1,56 @@
+{
+  "last_node_id": 2,
+  "last_link_id": 1,
+  "nodes": [
+    {
+      "id": 1,
+      "type": "OpenAIImageGeneration",
+      "pos": [60, 80],
+      "size": [430, 710],
+      "flags": {},
+      "order": 0,
+      "mode": 0,
+      "inputs": [],
+      "outputs": [
+        {"name": "images", "type": "IMAGE", "links": [1], "slot_index": 0, "shape": 6},
+        {"name": "masks", "type": "MASK", "links": null, "slot_index": 1, "shape": 6},
+        {"name": "metadata", "type": "STRING", "links": null, "slot_index": 2}
+      ],
+      "properties": {"Node name for S&R": "OpenAIImageGeneration"},
+      "widgets_values": [
+        "",
+        "A watercolor illustration of a red kite above a quiet seaside village",
+        "gpt-image-2.5-flare",
+        "1024x1024",
+        "auto",
+        1,
+        "auto",
+        "png",
+        100,
+        "auto",
+        0,
+        "increment",
+        300,
+        "{}"
+      ]
+    },
+    {
+      "id": 2,
+      "type": "SaveImage",
+      "pos": [560, 80],
+      "size": [450, 500],
+      "flags": {},
+      "order": 1,
+      "mode": 0,
+      "inputs": [{"name": "images", "type": "IMAGE", "link": 1}],
+      "outputs": [],
+      "properties": {},
+      "widgets_values": ["OpenAI"]
+    }
+  ],
+  "links": [[1, 1, 0, 2, 0, "IMAGE"]],
+  "groups": [],
+  "config": {},
+  "extra": {"ds": {"scale": 1, "offset": [0, 0]}},
+  "version": 0.4
+}

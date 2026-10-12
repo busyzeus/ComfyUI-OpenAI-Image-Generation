@@ -1,0 +1,27 @@
+{
+  "1": {
+    "class_type": "OpenAIImageGeneration",
+    "inputs": {
+      "api_key": "",
+      "prompt": "A watercolor illustration of a red kite above a quiet seaside village",
+      "model": "gpt-image-2.5-flare",
+      "size": "1024x1024",
+      "quality": "auto",
+      "n": 1,
+      "background": "auto",
+      "output_format": "png",
+      "output_compression": 100,
+      "moderation": "auto",
+      "generation_id": 0,
+      "timeout_seconds": 300,
+      "additional_parameters": "{}"
+    }
+  },
+  "2": {
+    "class_type": "SaveImage",
+    "inputs": {
+      "images": ["1", 0],
+      "filename_prefix": "OpenAI"
+    }
+  }
+}

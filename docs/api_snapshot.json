@@ -1,0 +1,274 @@
+{
+  "sources": {
+    "openapi": "https://raw.githubusercontent.com/openai/openai-openapi/main/openapi.json",
+    "guide": "https://developers.openai.com/api/docs/guides/image-generation.md",
+    "deprecations": "https://developers.openai.com/api/docs/deprecations.md"
+  },
+  "request_schema": {
+    "type": "object",
+    "properties": {
+      "prompt": {
+        "description": "A text description of the desired image(s). The maximum length is 32000 characters.",
+        "type": "string",
+        "example": "A cute baby sea otter"
+      },
+      "model": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "string",
+            "enum": [
+              "gpt-image-1.5",
+              "gpt-image-2",
+              "gpt-image-2-2026-04-21",
+              "gpt-image-2.5-sunburst",
+              "gpt-image-2.5-sunburst-2026-09-08",
+              "gpt-image-2.5-flare",
+              "gpt-image-2.5-flare-2026-09-08",
+              "gpt-image-1",
+              "gpt-image-1-mini",
+              "chatgpt-image-latest",
+              "dall-e-2",
+              "dall-e-3"
+            ],
+            "x-openai-enum-deprecations": {
+              "dall-e-2": {
+                "message": "This model was retired on May 12, 2026. Use a GPT image model instead."
+              },
+              "dall-e-3": {
+                "message": "This model was retired on May 12, 2026. Use a GPT image model instead."
+              }
+            }
+          }
+        ],
+        "x-oaiTypeLabel": "string",
+        "example": "gpt-image-2.5-flare",
+        "description": "The GPT image model to use for image generation. Specify a model explicitly. Supported models include `gpt-image-1`, `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`, `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, `gpt-image-2.5-flare-2026-09-08`, and `chatgpt-image-latest`."
+      },
+      "n": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "minimum": 1,
+        "maximum": 10,
+        "default": 1,
+        "example": 1,
+        "description": "The number of images to generate. Must be between 1 and 10."
+      },
+      "quality": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "low",
+              "medium",
+              "high",
+              "xhigh",
+              "max",
+              "auto",
+              "standard",
+              "hd"
+            ],
+            "x-openai-enum-deprecations": {
+              "standard": {
+                "message": "This quality was only supported by retired DALL·E models. Use a GPT image quality instead."
+              },
+              "hd": {
+                "message": "This quality was only supported by retired DALL·E models. Use a GPT image quality instead."
+              }
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": "auto",
+        "example": "medium",
+        "description": "The quality of the image that will be generated.\n\n- `auto` (default value) will automatically select the best quality for the given\n  model.\n- `high`, `medium` and `low` are supported for the GPT image models.\n- `gpt-image-2.5-sunburst` and `gpt-image-2.5-flare`, including their `2026-09-08`\n  snapshots, also support `xhigh` and `max`.\n"
+      },
+      "response_format": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "enum": [
+          "url",
+          "b64_json",
+          null
+        ],
+        "deprecated": true,
+        "description": "Legacy response format parameter for retired image models. Unsupported for GPT image models, which always return base64-encoded images."
+      },
+      "output_format": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "png",
+              "jpeg",
+              "webp"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": "png",
+        "example": "png",
+        "description": "The format in which the generated images are returned. This parameter is only supported for the GPT image models. Must be one of `png`, `jpeg`, or `webp`."
+      },
+      "output_compression": {
+        "type": [
+          "integer",
+          "null"
+        ],
+        "default": 100,
+        "example": 100,
+        "description": "The compression level (0-100%) for the generated images. This parameter is only supported for the GPT image models with the `webp` or `jpeg` output formats, and defaults to 100."
+      },
+      "stream": {
+        "type": [
+          "boolean",
+          "null"
+        ],
+        "default": false,
+        "example": false,
+        "description": "Generate the image in streaming mode. Defaults to `false`. See the\n[Image generation guide](https://developers.openai.com/api/docs/guides/image-generation) for more information.\nThis parameter is only supported for the GPT image models.\n"
+      },
+      "partial_images": {
+        "anyOf": [
+          {
+            "type": "integer",
+            "maximum": 3,
+            "minimum": 0,
+            "default": 0,
+            "example": 1,
+            "description": "The number of partial images to generate. This parameter is used for\nstreaming responses that return partial images. Value must be between 0 and 3.\nWhen set to 0, the response will be a single image sent in one streaming event.\n\nNote that the final image may be sent before the full number of partial images\nare generated if the full image is generated more quickly.\n"
+          },
+          {
+            "type": "null"
+          }
+        ]
+      },
+      "size": {
+        "anyOf": [
+          {
+            "type": "string"
+          },
+          {
+            "type": "string",
+            "enum": [
+              "auto",
+              "1024x1024",
+              "1536x1024",
+              "1024x1536",
+              "256x256",
+              "512x512",
+              "1792x1024",
+              "1024x1792"
+            ],
+            "x-openai-enum-deprecations": {
+              "256x256": {
+                "message": "This legacy size suggestion is retained for SDK compatibility. Check the selected GPT image model's supported sizes."
+              },
+              "512x512": {
+                "message": "This legacy size suggestion is retained for SDK compatibility. Check the selected GPT image model's supported sizes."
+              },
+              "1792x1024": {
+                "message": "This legacy size suggestion is retained for SDK compatibility. Check the selected GPT image model's supported sizes."
+              },
+              "1024x1792": {
+                "message": "This legacy size suggestion is retained for SDK compatibility. Check the selected GPT image model's supported sizes."
+              }
+            }
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": "auto",
+        "example": "1024x1024",
+        "description": "The size of the generated images. For `gpt-image-2`, `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, and `gpt-image-2.5-flare-2026-09-08`, arbitrary resolutions are supported as `WIDTHxHEIGHT` strings, for example `1536x864`. Width and height must both be divisible by 16 and the requested aspect ratio must be between 1:3 and 3:1. Resolutions above `2560x1440` are experimental, and the maximum supported resolution is `3840x2160`. The requested size must also satisfy the model's current pixel and edge limits. The standard sizes `1024x1024`, `1536x1024`, and `1024x1536` are supported by the GPT image models; `auto` is supported for models that allow automatic sizing."
+      },
+      "moderation": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "low",
+              "auto"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": "auto",
+        "example": "low",
+        "description": "Control the content-moderation level for images generated by the GPT image models. Must be either `low` for less restrictive filtering or `auto` (default value)."
+      },
+      "background": {
+        "anyOf": [
+          {
+            "type": "string",
+            "enum": [
+              "transparent",
+              "opaque",
+              "auto"
+            ]
+          },
+          {
+            "type": "null"
+          }
+        ],
+        "default": "auto",
+        "example": "transparent",
+        "description": "Set the background of the generated image(s). This parameter is only supported for\nthe GPT image models. Must be one of `transparent`, `opaque`, or `auto` (default\nvalue). When `auto` is used, the model will automatically determine the best\nbackground for the image.\n\n`gpt-image-2.5-sunburst` and `gpt-image-2.5-flare`, including their `2026-09-08`\nsnapshots, support `opaque` and `transparent` backgrounds. Transparent backgrounds\nare available for supported GPT Image models. For `gpt-image-2` and\n`gpt-image-2-2026-04-21`, this support is in preview. When using `transparent`,\nset the output format to `png` or `webp`.\n"
+      },
+      "style": {
+        "type": [
+          "string",
+          "null"
+        ],
+        "enum": [
+          "vivid",
+          "natural",
+          null
+        ],
+        "example": "vivid",
+        "deprecated": true,
+        "description": "Legacy style parameter for retired image models. Unsupported for GPT image models; describe the desired style in the prompt instead."
+      },
+      "user": {
+        "type": "string",
+        "example": "user-1234",
+        "description": "A unique identifier representing your end-user, which can help OpenAI to monitor and detect abuse. [Learn more](https://developers.openai.com/api/docs/guides/safety-best-practices#implement-safety-identifiers).\n"
+      }
+    },
+    "required": [
+      "model",
+      "prompt"
+    ]
+  },
+  "size_limits": {
+    "multiple": 16,
+    "max_ratio": 3,
+    "max_edge": 3840,
+    "min_pixels": 655360,
+    "max_pixels": 8294400
+  },
+  "retirements": {
+    "chatgpt-image-latest": "2026-12-01",
+    "gpt-image-1": "2026-10-23",
+    "gpt-image-1-mini": "2026-12-01",
+    "gpt-image-1.5": "2026-12-01"
+  },
+  "image_endpoints": [
+    "/images/edits",
+    "/images/generations",
+    "/images/variations"
+  ]
+}

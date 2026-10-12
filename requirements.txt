@@ -1,0 +1,5 @@
+requests>=2.32.4,<3
+jsonschema>=4.23,<5
+numpy>=1.26
+Pillow>=10.4
+# torch is provided by ComfyUI; do not replace its CUDA/CPU installation.
