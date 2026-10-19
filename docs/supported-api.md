@@ -32,7 +32,7 @@ Documented image endpoints: `/images/edits`, `/images/generations`, `/images/var
 - [guide](https://developers.openai.com/api/docs/guides/image-generation.md)
 - [deprecations](https://developers.openai.com/api/docs/deprecations.md)
 
-Relevant source snapshot SHA-256: `5ca5024b50afec3e2c6f205b1e8700264b046d5fafef7864f678621f539ab466`.
+Relevant source snapshot SHA-256: `da7f7faca7ad42eb6446870eb1b724adeec97f306bdd528470ad1a944abaed28`.
 
 Availability still depends on your OpenAI project. Models disappear from the
 node's menu on their documented shutdown date, even before the next weekly sync.
