@@ -10,7 +10,6 @@
     "gpt-image-2.5-sunburst-2026-09-08",
     "gpt-image-2.5-flare",
     "gpt-image-2.5-flare-2026-09-08",
-    "gpt-image-1",
     "gpt-image-1-mini",
     "chatgpt-image-latest"
   ],
@@ -89,12 +88,6 @@
       "max",
       "auto"
     ],
-    "gpt-image-1": [
-      "low",
-      "medium",
-      "high",
-      "auto"
-    ],
     "gpt-image-1-mini": [
       "low",
       "medium",
@@ -136,7 +129,6 @@
   "prompt_max_length": 32000,
   "retirements": {
     "chatgpt-image-latest": "2026-12-01",
-    "gpt-image-1": "2026-10-23",
     "gpt-image-1-mini": "2026-12-01",
     "gpt-image-1.5": "2026-12-01"
   },
@@ -170,6 +162,9 @@
               "dall-e-3"
             ],
             "x-openai-enum-deprecations": {
+              "gpt-image-1": {
+                "message": "GPT Image 1 was shut down on October 23, 2026. Use gpt-image-2.5-sunburst or gpt-image-2.5-flare instead."
+              },
               "dall-e-2": {
                 "message": "This model was retired on May 12, 2026. Use a GPT image model instead."
               },
@@ -181,7 +176,7 @@
         ],
         "x-oaiTypeLabel": "string",
         "example": "gpt-image-2.5-flare",
-        "description": "The GPT image model to use for image generation. Specify a model explicitly. Supported models include `gpt-image-1`, `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`, `gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`, `gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`, `gpt-image-2.5-flare-2026-09-08`, and `chatgpt-image-latest`."
+        "description": "The GPT image model to use for image generation. Specify a model explicitly.\nSupported models include `gpt-image-1-mini`, `gpt-image-1.5`, `gpt-image-2`,\n`gpt-image-2-2026-04-21`, `gpt-image-2.5-sunburst`,\n`gpt-image-2.5-sunburst-2026-09-08`, `gpt-image-2.5-flare`,\n`gpt-image-2.5-flare-2026-09-08`, and `chatgpt-image-latest`.\n\n`gpt-image-1` was shut down on October 23, 2026. Use\n`gpt-image-2.5-sunburst` or `gpt-image-2.5-flare` instead.\n"
       },
       "n": {
         "type": [

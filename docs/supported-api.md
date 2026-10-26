@@ -16,7 +16,6 @@ Default model: `gpt-image-2.5-flare`.
 | `gpt-image-2.5-sunburst-2026-09-08` | low, medium, high, xhigh, max, auto | yes | — |
 | `gpt-image-2.5-flare` | low, medium, high, xhigh, max, auto | yes | — |
 | `gpt-image-2.5-flare-2026-09-08` | low, medium, high, xhigh, max, auto | yes | — |
-| `gpt-image-1` | low, medium, high, auto | no | 2026-10-23 |
 | `gpt-image-1-mini` | low, medium, high, auto | no | 2026-12-01 |
 | `chatgpt-image-latest` | low, medium, high, auto | no | 2026-12-01 |
 
@@ -32,7 +31,7 @@ Documented image endpoints: `/images/edits`, `/images/generations`, `/images/var
 - [guide](https://developers.openai.com/api/docs/guides/image-generation.md)
 - [deprecations](https://developers.openai.com/api/docs/deprecations.md)
 
-Relevant source snapshot SHA-256: `da7f7faca7ad42eb6446870eb1b724adeec97f306bdd528470ad1a944abaed28`.
+Relevant source snapshot SHA-256: `ead7098b1dd91dc0e4adebf30f1fa3d746db5c5b7c319bc9e7fbec43a339902d`.
 
 Availability still depends on your OpenAI project. Models disappear from the
 node's menu on their documented shutdown date, even before the next weekly sync.
